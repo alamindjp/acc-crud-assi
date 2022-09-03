@@ -37,8 +37,8 @@ router.route('/bulk-update').patch((req, res) => {
 })
 router.route('/delete/:id').delete((req, res) => {
     const { id } = req.params;
-    const deleteUser = users.find(user => user.id === Number(id))
+    const newUsers = users.filter(user => user.id !== Number(id))
     
-    res.send(deleteUser)
+    res.send(newUsers)
 })
 module.exports = router;
