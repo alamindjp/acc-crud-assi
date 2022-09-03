@@ -5,9 +5,14 @@ const users = require('../Users.json')
 router.route('/all').get((req, res) => {
     res.send(users)
 })
+router.route('/').get((req, res) => {
+    const {limit} = req.query
+    res.send(users.slice(0, limit))
+})
 router.route('/random').get((req, res) => {
-    
-    res.send('found random user')
+    // const ranNum = Math.floor(Math.random() * 10);
+    console.log('random user')
+    // res.send(ranNum)
 })
 router.route('/save').post((req, res) => {
     
