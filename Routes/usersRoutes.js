@@ -15,8 +15,9 @@ router.route('/random').get((req, res) => {
     // res.send(ranNum)
 })
 router.route('/save').post((req, res) => {
-    
-    res.send('save user')
+    const user = req.body;
+  users.push(user);
+    res.send(users)
 })
 router.route('/update').patch((req, res) => {
     
@@ -26,8 +27,10 @@ router.route('/bulk-update').patch((req, res) => {
     
     res.send('update many users')
 })
-router.route('/delete').delete((req, res) => {
+router.route('/delete/:id').delete((req, res) => {
+    const { id } = req.params;
+    const deleteUser = users.find(user => user.id === Number(id))
     
-    res.send('delete user')
+    res.send(deleteUser)
 })
 module.exports = router;
