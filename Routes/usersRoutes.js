@@ -19,9 +19,17 @@ router.route('/save').post((req, res) => {
   users.push(user);
     res.send(users)
 })
-router.route('/update').patch((req, res) => {
-    
-    res.send("update user")
+router.route('/update/:id').patch((req, res) => {
+    const { id } = req.params;
+    const { name, gender, contact, address, photoUrl }=req.body;
+    const updateUser = users.find(user => user.id === Number(id))
+    updateUser.id = id;
+    updateUser.name = name;
+    updateUser.gender = gender;
+    updateUser.contact = contact;
+    updateUser.address = address;
+    updateUser.photoUrl = photoUrl;
+    res.send(updateUser)
 })
 router.route('/bulk-update').patch((req, res) => {
     
