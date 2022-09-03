@@ -16,6 +16,21 @@ router.route('/random').get((req, res) => {
 })
 router.route('/save').post((req, res) => {
     const user = req.body;
+    if (!user.name) {
+    res.send("make sure name field")
+    }
+    if (!user.gender) {
+    res.send("make sure gender field")
+    }
+    if (!user.contact) {
+    res.send("make sure contact field")
+    }
+    if (!user.address) {
+    res.send("make sure address field")
+    }
+    if (!user.photoUrl) {
+    res.send("make sure photoUrl field")
+    }
   users.push(user);
     res.send(users)
 })
